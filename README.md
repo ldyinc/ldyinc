@@ -1,59 +1,136 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDY Inc.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 20px;
+            border: 7px solid #808080;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .crypto-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .crypto-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .crypto-item img {
+            width: 24px;
+            height: 24px;
+        }
+        .crypto-item span {
+            flex-grow: 1;
+            text-align: right;
+            word-break: break-all;
+        }
+        .copy-btn {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .copy-btn:hover {
+            background-color: #333;
+        }
+        .copy-alert {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        a {
+            color: black;
+        }
+        .paypal-title {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .divider {
+            height: 2px;
+            background: #b0b0b0;
+            margin: 15px 0;
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                let alertBox = document.getElementById("copy-alert");
+                alertBox.style.display = "block";
+                setTimeout(() => {
+                    alertBox.style.display = "none";
+                }, 3000);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to LDY Inc.</h1>
+        <p>Game Development & Innovation</p>
+        <p>Contact: <a href="mailto:ldy@ldyinc.site">ldy@ldyinc.site</a></p>
+        <p>Follow us on <a href="https://x.com/ldygamestudio" target="_blank">X (Twitter)</a></p>
+        
+        <h2>Support Us</h2>
+        <div class="crypto-container">
+            <div class="crypto-item">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+                <strong>Bitcoin (BTC):</strong>
+                <span>1HoXkYYL8MxLmoyJu1GtEoUF1brfyfx8kj</span>
+                <button class="copy-btn" onclick="copyToClipboard('1HoXkYYL8MxLmoyJu1GtEoUF1brfyfx8kj')">📋</button>
+            </div>
+            <div class="crypto-item">
+                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
+                <strong>USDT (TRC20):</strong>
+                <span>TF9fDHGFaoH9C2casXrX4HSgE3jBkGd6Lb</span>
+                <button class="copy-btn" onclick="copyToClipboard('TF9fDHGFaoH9C2casXrX4HSgE3jBkGd6Lb')">📋</button>
+            </div>
+            <div class="crypto-item">
+                <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" alt="Toncoin">
+                <strong>TON (Toncoin):</strong>
+                <span>UQA3TCxjJQqn9lypQKrbk9HW-DfBuGFf5Eh9gHv01jj9xkxc</span>
+                <button class="copy-btn" onclick="copyToClipboard('UQA3TCxjJQqn9lypQKrbk9HW-DfBuGFf5Eh9gHv01jj9xkxc')">📋</button>
+            </div>
+        </div>
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+        <div id="copy-alert" class="copy-alert">Copied!</div>
 
-# GitHub Pages
+        <h3>Subscribe via PayPal</h3>
+        <p class="paypal-title">$1 Monthly Subscription</p>
+        <div id="paypal-button-container-P-8DM62405XN714580CM63N5NI"></div>
+        <div class="divider"></div>
+        <p class="paypal-title">$5 Monthly Subscription</p>
+        <div id="paypal-button-container-P-0BX04633PB770815XM63NHNY"></div>
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
-
-</header>
-
-<!--
-  <<< Author notes: Step 2 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
-  Historic note: previous version checked for empty pull request, changed to the correct theme `minima`.
--->
-
-## Step 2: Configure your site
-
-_You turned on GitHub Pages! :tada:_
-
-We'll work in a branch, `my-pages`, that I created for you to get this site looking great. :sparkle:
-
-Jekyll uses a file titled `_config.yml` to store settings for your site, your theme, and reusable content like your site title and GitHub handle. You can check out the `_config.yml` file on the **Code** tab of your repository.
-
-We need to use a blog-ready theme. For this activity, we will use a theme named "minima".
-
-### :keyboard: Activity: Configure your site
-
-1. Browse to the `_config.yml` file in the `my-pages` branch.
-1. In the upper right corner, open the file editor.
-1. Add a `theme:` set to **minima** so it shows in the `_config.yml` file as below:
-   ```yml
-   theme: minima
-   ```
-1. (optional) You can modify the other configuration variables such as `title:`, `author:`, and `description:` to further customize your site.
-1. Commit your changes.
-1. (optional) Create a pull request to view all the changes you'll make throughout this course. Click the **Pull Requests** tab, click **New pull request**, set `base: main` and `compare:my-pages`.
-1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
-<footer>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
-
----
-
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+        <div class="divider"></div>
+        <a href="https://nowpayments.io/donation?api_key=4GYKFJ2-06X4NWG-J6N25Q5-F7HQDKZ" target="_blank" rel="noreferrer noopener">
+            <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Cryptocurrency & Bitcoin donation button by NOWPayments">
+        </a>
+    </div>
+</body>
+</html>
