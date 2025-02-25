@@ -21,6 +21,19 @@
             border: 7px solid #808080;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .social-buttons a {
+            background: blue;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
         .crypto-wallet {
             display: flex;
             align-items: center;
@@ -29,6 +42,7 @@
             padding: 10px;
             border-radius: 5px;
             margin: 5px 0;
+            border: 3px solid gray;
         }
         .crypto-wallet img {
             width: 24px;
@@ -47,6 +61,7 @@
             padding: 5px;
             cursor: pointer;
             font-size: 14px;
+            width: 35px;
         }
         .footer {
             display: flex;
@@ -55,24 +70,13 @@
             padding: 10px;
             font-size: 14px;
         }
-        .social-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .social-buttons a {
-            background: blue;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to LDY Inc.</h1>
         <p>Game Development & Innovation</p>
-
+        
         <div class="social-buttons">
             <a href="#">Twitter</a>
             <a href="#">Email</a>
@@ -89,23 +93,43 @@
         
         <h3>Subscribe via PayPal</h3>
         <h4>$1 per month</h4>
-        <div id="paypal-button-container-P-8DM62405XN714580CM63N5NI"></div>
+        <div id="paypal-button-container-1"></div>
         <h4>$5 per month</h4>
-        <div id="paypal-button-container-P-0BX04633PB770815XM63NHNY"></div>
+        <div id="paypal-button-container-5"></div>
+        
+        <script>
+          function copyText(type) {
+              const addresses = {
+                  'btc': '1HoXkYYL8MxLmoyJu1GtEoUF1brfyfx8kj',
+                  'usdt': 'TF9fDHGFaoH9C2casXrX4HSgE3jBkGd6Lb',
+                  'ton': 'UQA3TCxjJQqn9lypQKrbk9HW-DfBuGFf5Eh9gHv01jj9xkxc',
+                  'doge': 'DBEjXntSSiaBVTFyZMoytZnwov3SctCfPs'
+              };
+              navigator.clipboard.writeText(addresses[type]).then(() => {
+                  alert('Copied to clipboard!');
+              });
+          }
+        </script>
         
         <script src="https://www.paypal.com/sdk/js?client-id=AcyBens_qg8Ae_7aefB5-4vIZgWlRXXRGys7or6sr8rdia292mtyaUCTcQpR5ACM1J002oG-ahiMU_g-&vault=true&intent=subscription"></script>
         <script>
           paypal.Buttons({
-              style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-              createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-8DM62405XN714580CM63N5NI' }); },
-              onApprove: function(data, actions) { alert(data.subscriptionID); }
-          }).render('#paypal-button-container-P-8DM62405XN714580CM63N5NI');
+              createSubscription: function(data, actions) {
+                  return actions.subscription.create({ plan_id: 'P-8DM62405XN714580CM63N5NI' });
+              },
+              onApprove: function(data, actions) {
+                  alert(data.subscriptionID);
+              }
+          }).render('#paypal-button-container-1');
           
           paypal.Buttons({
-              style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-              createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-0BX04633PB770815XM63NHNY' }); },
-              onApprove: function(data, actions) { alert(data.subscriptionID); }
-          }).render('#paypal-button-container-P-0BX04633PB770815XM63NHNY');
+              createSubscription: function(data, actions) {
+                  return actions.subscription.create({ plan_id: 'P-0BX04633PB770815XM63NHNY' });
+              },
+              onApprove: function(data, actions) {
+                  alert(data.subscriptionID);
+              }
+          }).render('#paypal-button-container-5');
         </script>
         
         <div class="divider"></div>
@@ -120,3 +144,4 @@
     </div>
 </body>
 </html>
+
